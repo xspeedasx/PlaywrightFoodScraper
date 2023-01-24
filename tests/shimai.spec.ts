@@ -6,7 +6,7 @@ test('open Shimai fb', async ({page}) => {
     const acceptCookies = page.getByText("Allow essential and optional cookies").nth(1);
     // await expect(acceptCookies).toContainText("cookies")
     // await acceptCookies.click({button: 'left'})
-    if(!!acceptCookies)
+    if(await acceptCookies.isVisible())
         await acceptCookies.click({button: 'left'})
 
     await page.waitForTimeout(2000);

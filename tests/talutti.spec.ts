@@ -8,7 +8,7 @@ test('open Talutti fb', async ({page}) => {
 
     // await expect(acceptCookies).toContainText("cookies")
     // await acceptCookies.click({button: 'left'})
-    if(!!acceptCookies)
+    if(await acceptCookies.isVisible())
         await acceptCookies.click({button: 'left'})
 
     
@@ -34,7 +34,7 @@ test('open Talutti fb', async ({page}) => {
     });
 
     //todo: make relative path
-    await page.goto("file://scraped/talutti.html")
+    await page.goto("scraped/talutti.html");
 
     await page
         .locator("body > div")
