@@ -2,6 +2,7 @@
 on:
   schedule: ## run at 11am daily
     - cron: '0 11 * * *'
+  workflow_dispatch:
 
 jobs:
   scrape:
