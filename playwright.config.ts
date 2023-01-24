@@ -37,12 +37,12 @@ const config: PlaywrightTestConfig = {
     actionTimeout: 0,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    video: 'on',
+    // video: 'false',
     screenshot: 'on',
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
-    headless: false,
+    headless: true,
 
     /* Set browser size */
     viewport: { width: 720, height: 1920 },

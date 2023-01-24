@@ -17,5 +17,9 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run tests
         run: npx playwright test
+      - uses: actions/upload-artifact@v3
+        with:
+          name: images
+          path: scraped/*.png
       # publish artifacts
       # send artifacts as email
