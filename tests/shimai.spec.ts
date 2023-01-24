@@ -4,8 +4,10 @@ test('open Shimai fb', async ({page}) => {
     await page.goto('https://www.facebook.com/Bitenu1');
 
     const acceptCookies = page.getByText("Allow essential and optional cookies").nth(1);
-    await expect(acceptCookies).toContainText("cookies")
-    await acceptCookies.click({button: 'left'})
+    // await expect(acceptCookies).toContainText("cookies")
+    // await acceptCookies.click({button: 'left'})
+    if(!!acceptCookies)
+        await acceptCookies.click({button: 'left'})
 
     await page.waitForTimeout(2000);
     

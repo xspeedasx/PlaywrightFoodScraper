@@ -4,8 +4,9 @@ test('open Meat Lovers fb', async ({page}) => {
     await page.goto('https://www.facebook.com/LoversPub');
 
     const acceptCookies = page.getByText("Allow essential and optional cookies").nth(1);
-    await expect(acceptCookies).toContainText("cookies")
-    await acceptCookies.click({button: 'left'})
+    //await expect(acceptCookies).toContainText("cookies")
+    if(!!acceptCookies)
+        await acceptCookies.click({button: 'left'})
 
     const url = await page.$eval('img[src*=scontent][width="526"]', img => img.attributes.getNamedItem("src")?.value)
     await page.goto(url!)

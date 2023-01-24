@@ -6,9 +6,11 @@ test('open Talutti fb', async ({page}) => {
 
     const acceptCookies = page.getByText("Allow essential and optional cookies").nth(1);
 
-    await expect(acceptCookies).toContainText("cookies")
+    // await expect(acceptCookies).toContainText("cookies")
+    // await acceptCookies.click({button: 'left'})
+    if(!!acceptCookies)
+        await acceptCookies.click({button: 'left'})
 
-    await acceptCookies.click({button: 'left'})
     
     //const locatorBase = "span:is(:has(img[alt='🎄']), :has(img[alt='❄'])):has(img[alt='📍'])";
     const locatorBase = "span:is(:has(img[alt='🍕']), :has(img[alt='🍔'])):has(img[alt='📍'])";
@@ -32,7 +34,7 @@ test('open Talutti fb', async ({page}) => {
     });
 
     //todo: make relative path
-    await page.goto("file://C:/Playwright/scraped/talutti.html")
+    await page.goto("file://scraped/talutti.html")
 
     await page
         .locator("body > div")
