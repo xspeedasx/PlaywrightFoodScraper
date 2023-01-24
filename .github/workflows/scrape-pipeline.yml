@@ -18,8 +18,14 @@ jobs:
       - name: Run tests
         run: xvfb-run npx playwright test
       - uses: actions/upload-artifact@v3
+        if: ${{ success() }}
         with:
           name: images
           path: scraped/*.png
+      - uses: actions/upload-artifact@v3
+        if: ${{ failure() }}
+        with:
+          name: images
+          path: test-results
       # publish artifacts
       # send artifacts as email
