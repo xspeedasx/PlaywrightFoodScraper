@@ -4,6 +4,9 @@ test('open Talutti fb', async ({page}) => {
     const fs = require("fs");
     await page.goto('https://www.facebook.com/TaluttiBakesNShakes');
 
+    await page.waitForLoadState();
+    await page.waitForTimeout(2000);
+
     const acceptCookies = page.getByText("Allow essential and optional cookies").nth(1);
 
     // await expect(acceptCookies).toContainText("cookies")
@@ -34,7 +37,8 @@ test('open Talutti fb', async ({page}) => {
     });
 
     //todo: make relative path
-    await page.goto("scraped/talutti.html");
+    const dir = process.cwd();
+    await page.goto('file://'+dir+'/scraped/talutti.html');
 
     await page
         .locator("body > div")

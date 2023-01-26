@@ -2,6 +2,9 @@ import {expect, test} from '@playwright/test';
 
 test('open Meat Lovers fb', async ({page}) => {
     await page.goto('https://www.facebook.com/LoversPub');
+    
+    await page.waitForLoadState();
+    await page.waitForTimeout(2000);
 
     const acceptCookies = page.getByText("Allow essential and optional cookies").nth(1);
     //await expect(acceptCookies).toContainText("cookies")
