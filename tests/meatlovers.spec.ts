@@ -11,7 +11,7 @@ test('open Meat Lovers fb', async ({page}) => {
     if(await acceptCookies.isVisible())
         await acceptCookies.click({button: 'left'})
 
-    const url = await page.$eval('img[src*=scontent][width="526"]', img => img.attributes.getNamedItem("src")?.value)
+    const url = await page.$eval('img[src*=scontent][width="526"][height="526"]', img => img.attributes.getNamedItem("src")?.value)
     await page.goto(url!)
 
     await page
