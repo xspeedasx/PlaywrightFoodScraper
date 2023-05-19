@@ -7,10 +7,17 @@ test('open Talutti fb', async ({page}) => {
     await page.waitForLoadState();
     await page.waitForTimeout(2000);
 
-    const acceptCookies = page.getByText("Allow essential and optional cookies").nth(1);
+    const acceptCookies = page.getByText("Allow all cookies").nth(1);
 
     if(await acceptCookies.isVisible())
         await acceptCookies.click({button: 'left'})
+
+    await page.waitForTimeout(2000);
+    
+    const cross = page.locator("div[aria-label='Close']");
+    if(await cross.isVisible())
+        await cross.click({button: 'left'})
+
 
     const locatorBase = "span:is(:has(img[alt='🍕']), :has(img[alt='🍔'])):has(img[alt='📍'])";
 
